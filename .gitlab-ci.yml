@@ -1,0 +1,11 @@
+before_script:
+    - date
+    - uname -a
+    - pip install --upgrade pip
+    - printenv | sort
+
+testScripts:
+    image: ddavid173/python
+    script:
+    - ls -al
+    - make test

@@ -1,13 +1,54 @@
-setup:
-	./adb-testing/adb devices > log.txt 2>&1
+FILES :=                              \
+    phone.py                      	  \
+    UnitTests/TestPhone.py            \
+    testScripts.py                    \   
 
-sendMessage:
-	./adb-testing/adb shell am force-stop com.pinwheel.messenger
-	./adb-testing/adb shell monkey -p com.pinwheel.messenger -c android.intent.category.LAUNCHER 1 > log.txt 2>&1
-	sleep 5
-	./adb-testing/adb shell input tap 250 400
-	sleep 5
-	./adb-testing/adb shell input tap 250 2250
-	./adb-testing/adb shell input text "insert%syour%stext%shere"
-	./adb-testing/adb shell input tap 1000 1450
+ifeq ($(shell uname), Darwin)          # Apple
+    PYTHON   := python3
+    PIP      := pip3
+    PYLINT   := pylint
+    COVERAGE := coverage
+    PYDOC    := pydoc3
+    AUTOPEP8 := autopep8
+    DOC := docker run -it -v $$(PWD):/usr/cs330e -w /usr/cs330e fareszf/python
+else ifeq ($(shell uname -p), unknown) # Windows
+    PYTHON   := python                 # on my machine it's python
+    PIP      := pip3
+    PYLINT   := pylint
+    COVERAGE := coverage
+    PYDOC    := python -m pydoc        # on my machine it's pydoc
+    AUTOPEP8 := autopep8
+    DOC := docker run -it -v /$$(PWD):/usr/cs330e -w //usr/cs330e fareszf/python
+else                                   # UTCS
+    PYTHON   := python3
+    PIP      := pip3
+    PYLINT   := pylint3
+    COVERAGE := coverage
+    PYDOC    := pydoc3
+    AUTOPEP8 := autopep8
+    DOC := docker run -it -v $$(PWD):/usr/cs330e -w /usr/cs330e fareszf/python
+endif
 
+check:
+	@not_found=0;                                 \
+    for i in $(FILES);                            \
+    do                                            \
+        if [ -e $$i ];                            \
+        then                                      \
+            echo "$$i found";                     \
+        else                                      \
+            echo "$$i NOT FOUND";                 \
+            not_found=`expr "$$not_found" + "1"`; \
+        fi                                        \
+    done;                                         \
+    if [ $$not_found -ne 0 ];                     \
+    then                                          \
+        echo "$$not_found failures";              \
+        exit 1;                                   \
+    fi;                                           \
+    echo "success";
+
+docker:
+	$(DOC)
+
+test: TestScripts.py phone.py testScripts.py check
