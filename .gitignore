@@ -1,3 +1,4 @@
 *.apk
 __pycache__/
 *.png
+log.txt

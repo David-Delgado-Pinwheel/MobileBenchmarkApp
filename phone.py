@@ -66,14 +66,14 @@ class phone():
         results = {"CPU": [], "GPU": [], "Memory": [], "UX": [], "Total": [], "AVG": 0}
         self.__logAction(f"Getting test scores from {count} tests")
         for i in range(count):
-            self.__logAction(f"Test {i}")
-            r = self.testAntutu()
+            self.__logAction(f"Test {i + 1}")
+            r = list(map(int, self.testAntutu()))
             if r == []:
                 return "APK Not Found"
             else:
-                self.__logAction(f"Test {i} sucess")
+                self.__logAction(f"Test {i + 1} sucess")
                 (results[results.keys()[i]].append(r[i]) for i in range(4))
-                results["Total"] = sum(r)
+                results["Total"].append(sum(r))
         results["AVG"] = sum(results["Total"]) // count
         self.__logAction("Resturning Results")
         return results

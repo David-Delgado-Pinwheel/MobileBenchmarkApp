@@ -5,5 +5,5 @@ if __name__ == "__main__":
 
     phone = phone()
     
-    print(phone.testAntutu())
+    print(phone.repeatTestAntutu(2))
     

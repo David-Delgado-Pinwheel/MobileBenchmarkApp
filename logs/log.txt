@@ -1,6 +1,13 @@
-21:32:16 --- Connected to <ppadb.device.Device object at 0x0000023FAA33C6D0>
-21:32:47 --- Install in Antutu
-21:32:54 --- Install in Antutu
-21:33:06 --- Benchmark Started
-21:43:16 --- Antutu Test Sucess
-21:43:22 --- Screenshot Sucess
+23:26:32 --- Connected to <ppadb.device.Device object at 0x0000018E31CC9F90>
+23:26:32 --- Getting test scores from 2 tests
+23:26:32 --- Test 1
+23:26:45 --- Benchmark Started
+23:37:32 --- Antutu Test Sucess
+23:37:38 --- Screenshot Sucess
+23:37:39 --- Test 1 sucess
+23:37:39 --- Test 2
+23:37:45 --- Benchmark Started
+23:48:11 --- Antutu Test Sucess
+23:48:16 --- Screenshot Sucess
+23:48:18 --- Test 2 sucess
+23:48:18 --- Resturning Results
