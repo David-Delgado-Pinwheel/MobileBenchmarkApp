@@ -51,4 +51,13 @@ check:
 docker:
 	$(DOC)
 
+TestPhone.py:
+	echo "TestPhone.py is there'
+
+testScripts.py:
+	echo "testScripts.py is there'
+
+phone.py:
+	echo "phone.py there'
+
 test: TestPhone.py phone.py testScripts.py check
