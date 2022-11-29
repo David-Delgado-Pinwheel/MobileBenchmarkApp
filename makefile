@@ -51,4 +51,4 @@ check:
 docker:
 	$(DOC)
 
-test: TestScripts.py phone.py testScripts.py check
+test: TestPhone.py phone.py testScripts.py check
