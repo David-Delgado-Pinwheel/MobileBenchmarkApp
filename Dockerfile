@@ -10,6 +10,7 @@ RUN pip install --upgrade pip && \
     pip install mypy          && \
     pip install pylint        && \
     pip install pytesseract   && \
+    pip install PySimpleGUI   && \
     pip install PLT           && \
     pip install cv2           && \
     pip list
