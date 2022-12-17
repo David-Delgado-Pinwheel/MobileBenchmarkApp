@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from tools.imageInterperate import readBenchmarkScores
 import PySimpleGUI
 import os
+import json
 
 
 class phone():
@@ -65,7 +66,10 @@ class phone():
         return scores
         
     def repeatTestAntutu(self, count: int) -> dict:
-        results = {"CPU": [], "GPU": [], "Memory": [], "UX": [], "Total": [], "AVG": 0}
+
+        now = datetime.now().strftime("%m/%d/%Y - %H:%M:%S")
+        results = { now : {"CPU": [], "GPU": [], "Memory": [], "UX": [], "Total": [], "AVG": 0}}
+
         self.__logAction(f"Getting test scores from {count} tests")
         for i in range(count):
             self.__logAction(f"Test {i + 1}")
@@ -74,11 +78,17 @@ class phone():
                 return "APK Not Found"
             else:
                 self.__logAction(f"Test {i + 1} sucess")
-                (results[results.keys()[i]].append(r[i]) for i in range(4))
-                results["Total"].append(sum(r))
-        results["AVG"] = sum(results["Total"]) // count
+                (results[now][results[now].keys()[i]].append(r[i]) for i in range(4))
+                results[now]["Total"].append(sum(r))
+        results[now]["AVG"] = sum(results[now]["Total"]) // count
+
         self.__logAction("Resturning Results")
         self.__logAction(str(results))
+
+        # Save results to the file
+        with open('TestResult/results.json', 'w') as f:
+            json.dump(results, f)
+            f.close()
         return results
 
     def fiveSecondsAgo(self) -> str:
