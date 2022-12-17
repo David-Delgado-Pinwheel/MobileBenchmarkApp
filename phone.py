@@ -2,12 +2,14 @@ import time
 from ppadb.client import Client as AdbClient
 from datetime import datetime, timedelta
 from tools.imageInterperate import readBenchmarkScores
+import PySimpleGUI
 import os
 
 
 class phone():
 
-    def __init__(self):
+    def __init__(self, GUI=False):
+        self.usingGUI = GUI
         self.logLocation = "./logs/log.txt"
         self.log = open(self.logLocation, "w")
         self.client = AdbClient(host="127.0.0.1", port=5037) # Default is "127.0.0.1" and 5037
@@ -76,6 +78,7 @@ class phone():
                 results["Total"].append(sum(r))
         results["AVG"] = sum(results["Total"]) // count
         self.__logAction("Resturning Results")
+        self.__logAction(str(results))
         return results
 
     def fiveSecondsAgo(self) -> str:

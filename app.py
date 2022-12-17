@@ -1,5 +1,9 @@
 import PySimpleGUI as sg
 import json
+from phone import phone
+import time
+from datetime import datetime, timedelta
+from threading import Thread
 
 # Define the default settings
 settings = {
@@ -8,7 +12,24 @@ settings = {
     'setting3': 'value3'
 }
 
+def log(message: str) -> str:
+    return print(f'{datetime.now().strftime("%H:%M:%S")} --- ' + message)
+
+def connectPhone(device) -> None or phone:
+    try:
+        device = phone()
+        log("Device Connected")
+        return device
+    except AttributeError:
+        sg.popup_error("Device Not Connected")
+        log("Connection Error")
+        return None
+    
+
 def main():
+
+    device = None
+
     # Check if the settings file exists
     try:
         # If the file exists, read the existing settings from the file
@@ -19,26 +40,35 @@ def main():
         with open('settings.json', 'w') as f:
             json.dump(settings, f)
 
-    layout = [[sg.Text('Enter your name:'), sg.Input()],
-            [sg.Button('Ok'), sg.Button('Change Amount'), sg.Text(settings["testLoopCount"])],
+    layout = [[sg.Button('Init Device')],
+            [sg.Output(size=(80, 20), key='output')],
+            [sg.Button('Start Benchmarks'), sg.Button('Benchmark Count')],
             [sg.Button('Close')]]
 
     window = sg.Window('Window Title', layout)
-    save = ""
+
     while True:
         
         event, values = window.read()
-        if event in (None, 'Cancel'):
+        if event == 'Close':
             break
-        if event == 'Change Amount':
+
+        elif event == 'Benchmark Count':
             try:
                 temp = int(sg.popup_get_text('How many times to repeat benchmark?', 'Tests'))
+                log(f"Benchmark will run {temp} times")
                 settings['testLoopCount'] = temp
             except ValueError:
                 sg.popup_error("Invalid Number: Please enter a whole number")
+        
+        elif event == 'Start Benchmarks':
+            if device == None:
+                log("Device not connected(Connect the Device and click Init Device)")
+            else:
+                Thread(target=device.repeatTestAntutu, daemon = True, args=([settings['testLoopCount']])).start()
 
-        else:
-            print('You entered', values[0], settings["testLoopCount"])
+        elif event == 'Init Device':
+            device = connectPhone(device)
 
     window.close()
 
