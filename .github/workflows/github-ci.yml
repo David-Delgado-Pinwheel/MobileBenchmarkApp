@@ -26,9 +26,10 @@ jobs:
           make test
       
       - name: createEXE
-        uses: JackMcKew/pyinstaller-action-windows@main
-        with:
-          path: src
+        run: |
+          ls -al
+          cd src
+          pyinstaller main.py
 
       - uses: actions/upload-artifact@v2
         with:
