@@ -4,3 +4,4 @@ __pycache__/
 log.txt
 settings.json
 results.json
+*.code-workspace
