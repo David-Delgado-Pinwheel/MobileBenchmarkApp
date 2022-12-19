@@ -11,7 +11,7 @@ class phone():
 
     def __init__(self, GUI=False):
         self.usingGUI = GUI
-        self.logLocation = "./logs/log.txt"
+        self.logLocation = "./src/logs/log.txt"
         self.log = open(self.logLocation, "w")
         self.client = AdbClient(host="127.0.0.1", port=5037) # Default is "127.0.0.1" and 5037
 
@@ -32,10 +32,10 @@ class phone():
 
     def screenshot(self):
         screenshot = self.device.screencap()
-        with open('ScreenCaptures/result.png', 'wb') as f: # save the screenshot as result.png
+        with open('./src/ScreenCaptures/result.png', 'wb') as f: # save the screenshot as result.png
             f.write(screenshot)
         self.__logAction("Screenshot Sucess")
-        return "ScreenCaptures/result.png"
+        return "./src/ScreenCaptures/result.png"
 
     def testAntutu(self) -> list:
 
@@ -87,9 +87,10 @@ class phone():
         self.__logAction(str(results))
 
         # Save results to the file
-        with open('TestResult/results.json', 'w') as f:
+        with open('./src/TestResult/results.json', 'w') as f:
             json.dump(results, f)
             f.close()
+
         return results
 
     def fiveSecondsAgo(self) -> str:
@@ -104,7 +105,7 @@ class phone():
         print(f'{datetime.now().strftime("%H:%M:%S")} --- ' + action)
 
     def install(self, fileName: str) -> bool:
-        path = "./apks/" + fileName
+        path = "./src/apks/" + fileName
         if os.path.exists(path):
             self.device.install(path)
             self.__logAction("Install Antutu")

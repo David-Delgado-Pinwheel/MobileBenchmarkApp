@@ -33,11 +33,11 @@ def main():
     # Check if the settings file exists
     try:
         # If the file exists, read the existing settings from the file
-        with open('settings.json', 'r') as f:
+        with open('./src/settings.json', 'r') as f:
             settings = json.load(f)
     except FileNotFoundError:
         # If the file doesn't exist, create it and write the default settings to the file
-        with open('settings.json', 'w') as f:
+        with open('./src/settings.json', 'w') as f:
             json.dump(settings, f)
 
     layout = [[sg.Button('Init Device')],
@@ -73,7 +73,7 @@ def main():
     window.close()
 
     # Save the updated settings to the file
-    with open('settings.json', 'w') as f:
+    with open('./src/settings.json', 'w') as f:
         json.dump(settings, f)
 
 
