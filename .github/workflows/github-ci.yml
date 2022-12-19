@@ -25,7 +25,6 @@ jobs:
           make test
       
       - name: createEXE
-        run: |
-          ls -al
-          pip install pyinstaller
-          pyinstaller --onefile --windowed app.py
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: .
