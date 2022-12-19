@@ -25,6 +25,6 @@ jobs:
           make test
       
       - name: createEXE
-        uses: JackMcKew/pyinstaller-action-windows@app
+        uses: JackMcKew/pyinstaller-action-windows@main
         with:
           path: src
