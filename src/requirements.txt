@@ -3,4 +3,5 @@ pep8
 pylint
 PySimpleGUI
 pytesseract
+pyinstaller @ https://github.com/pyinstaller/pyinstaller/archive/develop.zip
 gooey
