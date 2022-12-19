@@ -26,9 +26,11 @@ jobs:
           make test
       
       - name: createEXE
-        uses: JackMcKew/pyinstaller-action-windows@main
-        with:
-          path: src
+        run: |
+          ls -al
+          cd src
+          pip install pyinstaller
+          pyinstaller main.py
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@master
