@@ -23,3 +23,9 @@ jobs:
         run: |
           ls -al
           make test
+      
+      - name: createEXE
+        run: |
+          ls -al
+          pip install pyinstaller
+          pyinstaller --onefile --windowed app.py
