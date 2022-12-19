@@ -22,6 +22,7 @@ jobs:
       - name: testScripts
         run: |
           ls -al
+          cd src
           make test
       
       - name: createEXE
