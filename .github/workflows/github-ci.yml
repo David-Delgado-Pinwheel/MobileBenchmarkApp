@@ -27,4 +27,4 @@ jobs:
       - name: createEXE
         uses: JackMcKew/pyinstaller-action-windows@main
         with:
-          path: .
+          path: src
