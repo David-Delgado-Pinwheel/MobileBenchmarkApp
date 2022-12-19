@@ -30,7 +30,10 @@ jobs:
         with:
           path: src
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-exe
-          path: src/dist/windows
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@master
+        env:
+          REPO: self
+          BRANCH: master
+          FOLDER: build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
