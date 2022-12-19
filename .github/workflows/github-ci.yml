@@ -24,14 +24,4 @@ jobs:
           ls -al
           cd src
           make test
-      
-      - name: createEXE
-        uses: JackMcKew/pyinstaller-action-windows@main
-        with:
-          path: src
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: my-exe
-          path: src
 
