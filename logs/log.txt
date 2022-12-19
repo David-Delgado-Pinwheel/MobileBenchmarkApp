@@ -1,0 +1,14 @@
+21:24:05 --- Connected to <ppadb.device.Device object at 0x000002384A7F8FD0>
+21:24:06 --- Getting test scores from 1 tests
+21:24:06 --- Test 1
+21:24:12 --- Benchmark Started
+21:34:08 --- Getting test scores from 1 tests
+21:34:09 --- Test 1
+21:34:16 --- Benchmark Started
+21:34:18 --- Antutu Test Sucess
+21:34:21 --- Antutu Test Sucess
+21:34:23 --- Screenshot Sucess
+21:34:24 --- Test 1 sucess
+21:34:24 --- Resturning Results
+21:34:24 --- {'12/16/2022 - 21:24:06': {'CPU': [70869], 'GPU': [41582], 'Memory': [36453], 'UX': [70142], 'Total': [0], 'AVG': 0}}
+21:34:26 --- Screenshot Sucess

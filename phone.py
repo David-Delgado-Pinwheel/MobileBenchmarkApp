@@ -78,7 +78,8 @@ class phone():
                 return "APK Not Found"
             else:
                 self.__logAction(f"Test {i + 1} sucess")
-                (results[now][results[now].keys()[i]].append(r[i]) for i in range(4))
+                for key in list(results[now].keys())[0:4]:
+                    results[now][key].append(r.pop())
                 results[now]["Total"].append(sum(r))
         results[now]["AVG"] = sum(results[now]["Total"]) // count
 
