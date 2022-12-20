@@ -2,6 +2,7 @@ import time
 from ppadb.client import Client as AdbClient
 from datetime import datetime, timedelta
 from tools.imageInterperate import readBenchmarkScores
+from pathlib import Path
 import PySimpleGUI
 import os
 import json
@@ -11,7 +12,7 @@ class phone():
 
     def __init__(self, GUI=False):
         self.usingGUI = GUI
-        self.logLocation = "./src/logs/log.txt"
+        self.logLocation = Path("./logs/log.txt")
         self.log = open(self.logLocation, "w")
         self.client = AdbClient(host="127.0.0.1", port=5037) # Default is "127.0.0.1" and 5037
 
@@ -32,10 +33,10 @@ class phone():
 
     def screenshot(self):
         screenshot = self.device.screencap()
-        with open('./src/ScreenCaptures/result.png', 'wb') as f: # save the screenshot as result.png
+        with open('./ScreenCaptures/result.png', 'wb') as f: # save the screenshot as result.png
             f.write(screenshot)
         self.__logAction("Screenshot Sucess")
-        return "./src/ScreenCaptures/result.png"
+        return "./ScreenCaptures/result.png"
 
     def testAntutu(self) -> list:
 
@@ -87,7 +88,7 @@ class phone():
         self.__logAction(str(results))
 
         # Save results to the file
-        with open('./src/TestResult/results.json', 'w') as f:
+        with open('./TestResult/results.json', 'w') as f:
             json.dump(results, f)
             f.close()
 
@@ -105,7 +106,7 @@ class phone():
         print(f'{datetime.now().strftime("%H:%M:%S")} --- ' + action)
 
     def install(self, fileName: str) -> bool:
-        path = "./src/apks/" + fileName
+        path = "./apks/" + fileName
         if os.path.exists(path):
             self.device.install(path)
             self.__logAction("Install Antutu")

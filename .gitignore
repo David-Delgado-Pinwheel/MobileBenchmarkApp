@@ -5,3 +5,6 @@ log.txt
 settings.json
 results.json
 *.code-workspace
+*.spec
+build
+dist

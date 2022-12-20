@@ -25,3 +25,28 @@ jobs:
           cd src
           make test
 
+  Build:
+    needs: Test-Files
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+      - name: build
+        run: |
+          pip install pyinstaller
+          cd 
+          pyinstaller --onefile main.py
+      
+      - name: GIT Commit
+        needs: build
+        if: github.event_name == 'push'
+        run: |
+          git checkout "build"
+          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+          git config --global user.email "username@users.noreply.github.com"
+          git add dist build
+          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
+          git push
+
+
+            

@@ -1,16 +1,14 @@
-import PySimpleGUI as sg
-import json
-from phone import phone
-import time
-from datetime import datetime, timedelta
 from threading import Thread
+import PySimpleGUI as sg
+from pathlib import Path
+import json
+import os
 
-# Define the default settings
-settings = {
-    "testLoopCount" : 1,
-    'setting2': 'value2',
-    'setting3': 'value3'
-}
+
+from datetime import datetime, timedelta
+import time
+
+from phone import phone
 
 def log(message: str) -> str:
     return print(f'{datetime.now().strftime("%H:%M:%S")} --- ' + message)
@@ -27,17 +25,24 @@ def connectPhone(device) -> None or phone:
     
 
 def main():
+    settingDirect = Path("./settings.json")
+    # Define the default settings
+    settings = {
+        "testLoopCount" : 1,
+        'setting2': 'value2',
+        'setting3': 'value3'
+    }
 
     device = None
 
     # Check if the settings file exists
     try:
         # If the file exists, read the existing settings from the file
-        with open('settings.json', 'r') as f:
+        with open("settings.json", 'r') as f:
             settings = json.load(f)
     except FileNotFoundError:
         # If the file doesn't exist, create it and write the default settings to the file
-        with open('settings.json', 'w') as f:
+        with open(settingDirect, 'w') as f:
             json.dump(settings, f)
 
     layout = [[sg.Button('Init Device')],
@@ -50,7 +55,8 @@ def main():
     while True:
         
         event, values = window.read()
-        if event == 'Close':
+
+        if event == 'Close' or event == sg.WIN_CLOSED:
             break
 
         elif event == 'Benchmark Count':
@@ -73,7 +79,7 @@ def main():
     window.close()
 
     # Save the updated settings to the file
-    with open('settings.json', 'w') as f:
+    with open(settingDirect, 'w') as f:
         json.dump(settings, f)
 
 
