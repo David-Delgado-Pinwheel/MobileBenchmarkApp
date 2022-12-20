@@ -3,6 +3,7 @@
 # Requirements
 - Python
 - Tesseract OCR
+- Antutu APKs
 
 # Setup
 
