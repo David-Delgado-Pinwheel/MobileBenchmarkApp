@@ -34,7 +34,7 @@ jobs:
       - name: build
         run: |
           pip install pyinstaller
-          cd 
+          cd src
           pyinstaller --onefile main.py
       
       - name: GIT Commit
