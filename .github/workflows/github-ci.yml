@@ -29,22 +29,16 @@ jobs:
     needs: Test-Files
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-
-    - name: Create local changes
-      run: |
-        cd src
-        pip install pyinstaller
-        pyinstaller --onefile main.py
-        cd ..
+        path: src
 
     - name: Commit & Push changes
       uses: actions-js/push@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: build
 
 
             
