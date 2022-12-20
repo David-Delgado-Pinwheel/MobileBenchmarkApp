@@ -60,4 +60,4 @@ testScripts.py:
 phone.py:
 	echo "phone.py there"
 
-test: TestPhone.py phone.py testScripts.py check
+test: TestPhone.py phone.py check
