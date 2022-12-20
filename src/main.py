@@ -26,7 +26,6 @@ def connectPhone(device) -> None or phone:
 
 def main():
     settingDirect = Path("./settings.json")
-    # Define the default settings
     settings = {
         "testLoopCount" : 1,
         'setting2': 'value2',
@@ -35,13 +34,10 @@ def main():
 
     device = None
 
-    # Check if the settings file exists
     try:
-        # If the file exists, read the existing settings from the file
         with open("settings.json", 'r') as f:
             settings = json.load(f)
     except FileNotFoundError:
-        # If the file doesn't exist, create it and write the default settings to the file
         with open(settingDirect, 'w') as f:
             json.dump(settings, f)
 
@@ -78,7 +74,6 @@ def main():
 
     window.close()
 
-    # Save the updated settings to the file
     with open(settingDirect, 'w') as f:
         json.dump(settings, f)
 

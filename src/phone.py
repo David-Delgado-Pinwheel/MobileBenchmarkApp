@@ -14,7 +14,7 @@ class phone():
         self.usingGUI = GUI
         self.logLocation = Path("./logs/log.txt")
         self.log = open(self.logLocation, "w")
-        self.client = AdbClient(host="127.0.0.1", port=5037) # Default is "127.0.0.1" and 5037
+        self.client = AdbClient(host="127.0.0.1", port=5037)
 
         self.devices = self.client.devices()
 
@@ -33,7 +33,7 @@ class phone():
 
     def screenshot(self):
         screenshot = self.device.screencap()
-        with open('./ScreenCaptures/result.png', 'wb') as f: # save the screenshot as result.png
+        with open('./ScreenCaptures/result.png', 'wb') as f:
             f.write(screenshot)
         self.__logAction("Screenshot Sucess")
         return "./ScreenCaptures/result.png"
@@ -87,7 +87,6 @@ class phone():
         self.__logAction("Resturning Results")
         self.__logAction(str(results))
 
-        # Save results to the file
         with open('./TestResult/results.json', 'w') as f:
             json.dump(results, f)
             f.close()
