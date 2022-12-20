@@ -36,6 +36,7 @@ jobs:
           pip install pyinstaller
           cd src
           pyinstaller --onefile main.py
+          ls
       
       - name: GIT Commit
         if: github.event_name == 'push'
