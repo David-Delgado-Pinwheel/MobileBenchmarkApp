@@ -29,24 +29,22 @@ jobs:
     needs: Test-Files
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
 
-      - uses: actions/checkout@v3
-      - name: build
-        run: |
-          pip install pyinstaller
-          cd src
-          pyinstaller --onefile main.py
-          ls
-      
-      - name: GIT Commit
-        if: github.event_name == 'push'
-        run: |
-          git checkout "build"
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "username@users.noreply.github.com"
-          git add dist build
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
+    - name: Create local changes
+      run: |
+        cd src
+        pip install pyinstaller
+        pyinstaller --onefile main.py
+        cd ..
+
+    - name: Commit & Push changes
+      uses: actions-js/push@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
             
