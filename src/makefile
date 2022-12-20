@@ -1,7 +1,6 @@
 FILES :=                              \
     phone.py                      	  \
     UnitTests/TestPhone.py            \
-    testScripts.py                    \   
 
 ifeq ($(shell uname), Darwin)          # Apple
     PYTHON   := python3
@@ -53,9 +52,6 @@ docker:
 
 TestPhone.py:
 	echo "TestPhone.py is there"
-
-testScripts.py:
-	echo "testScripts.py is there"
 
 phone.py:
 	echo "phone.py there"
