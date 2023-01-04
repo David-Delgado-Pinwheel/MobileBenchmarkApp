@@ -7,7 +7,13 @@
 
 # Setup
 
-1. Install Tesseract and Python if needed
+1. Install Tesseract, Python, abd dependencies
+  1. [Python](https://www.python.org/downloads/)
+  2. [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+  3. dependencies
+    ```
+    pip install -r requirements.txt
+    ```
 2. Cloning the repo
 3. PyInstaller to build App
   1. Install Pyinstaller
