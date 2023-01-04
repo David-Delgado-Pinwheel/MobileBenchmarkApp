@@ -7,21 +7,27 @@
 
 # Setup
 
-1. Install Tesseract and Python if needed
+1. Install Tesseract, Python, abd dependencies
+  - [Python](https://www.python.org/downloads/)
+  - [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+  - dependencies
+    ```
+    pip install -r requirements.txt
+    ```
 2. Cloning the repo
 3. PyInstaller to build App
-  1. Install Pyinstaller
-  ```
-  pip install pyinstaller
-  ```
-  2. Go to src directory
-  ```
-  cd src
-  ```
-  3. Build App
-  ```
-  pyinstaller --onefile main.py
-  ```
+  - Install Pyinstaller
+    ```
+    pip install pyinstaller
+    ```
+  - Go to src directory
+    ```
+    cd src
+    ```
+  - Build App
+    ```
+    pyinstaller --onefile main.py
+    ```
 4. App is build. Navigate to the dist file in src and run the main.exe
 
 # How to use
