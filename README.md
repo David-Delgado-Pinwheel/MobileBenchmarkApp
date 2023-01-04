@@ -1,36 +1,36 @@
 # Test App: A simple app to automate testing devices with the Antutu Benchmark
 
 # Requirements
-- Python
-- Tesseract OCR
-- Antutu APKs
+  - Python
+  - Tesseract OCR
+  - Antutu APKs
 
 # Setup
 
 1. Install Tesseract, Python, abd dependencies
-  - [Python](https://www.python.org/downloads/)
-  - [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
-  - dependencies
-    ```
-    pip install -r requirements.txt
-    ```
+    - [Python](https://www.python.org/downloads/)
+    - [Tesseract](https://github.com/UB-Mannheim/tesseract/wiki)
+    - dependencies
+      ```
+      pip install -r requirements.txt
+      ```
 2. Cloning the repo
-  ```
-  git clone https://github.com/David-Delgado-Pinwheel/MobileBenchmarkApp
-  ```
+    ```
+    git clone https://github.com/David-Delgado-Pinwheel/MobileBenchmarkApp
+    ```
 3. PyInstaller to build App
-  - Install Pyinstaller
-    ```
-    pip install pyinstaller
-    ```
-  - Go to src directory
-    ```
-    cd src
-    ```
-  - Build App
-    ```
-    pyinstaller --onefile main.py
-    ```
+    - Install Pyinstaller
+      ```
+      pip install pyinstaller
+      ```
+    - Go to src directory
+      ```
+      cd src
+      ```
+    - Build App
+      ```
+      pyinstaller --onefile main.py
+      ```
 4. App is build. Navigate to the dist file in src and run the main.exe
 
 # How to use
