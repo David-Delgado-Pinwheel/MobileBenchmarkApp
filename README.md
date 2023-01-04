@@ -15,6 +15,9 @@
     pip install -r requirements.txt
     ```
 2. Cloning the repo
+  ```
+  git clone https://github.com/David-Delgado-Pinwheel/MobileBenchmarkApp
+  ```
 3. PyInstaller to build App
   - Install Pyinstaller
     ```
