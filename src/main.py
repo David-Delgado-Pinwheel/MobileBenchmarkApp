@@ -1,14 +1,14 @@
-from threading import Thread
-import PySimpleGUI as sg
-from pathlib import Path
 import json
 import os
-
-
-from datetime import datetime, timedelta
 import time
+from datetime import datetime, timedelta
+from pathlib import Path
+from threading import Thread
+
+import PySimpleGUI as sg
 
 from phone import phone
+
 
 def log(message: str) -> str:
     return print(f'{datetime.now().strftime("%H:%M:%S")} --- ' + message)

@@ -1,11 +1,12 @@
-import time
-from ppadb.client import Client as AdbClient
-from datetime import datetime, timedelta
-from tools.imageInterperate import readBenchmarkScores
-from pathlib import Path
-import PySimpleGUI
-import os
 import json
+import os
+import time
+from datetime import datetime, timedelta
+from pathlib import Path
+
+from ppadb.client import Client as AdbClient
+
+from tools.imageInterperate import readBenchmarkScores
 
 
 class phone():

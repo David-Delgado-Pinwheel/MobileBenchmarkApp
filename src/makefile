@@ -28,6 +28,10 @@ else                                   # UTCS
     DOC := docker run -it -v $$(PWD):/usr/cs330e -w /usr/cs330e fareszf/python
 endif
 
+cleanBuild:
+	rm "/build/*"
+	rm "./dist/main.exe"
+ 
 check:
 	@not_found=0;                                 \
     for i in $(FILES);                            \

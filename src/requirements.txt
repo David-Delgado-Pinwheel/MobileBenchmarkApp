@@ -16,3 +16,7 @@ pywin32-ctypes
 six
 wxPython
 pathlib
+datetime
+DateTime
+opencv-python
+pure-python-adb
