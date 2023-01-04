@@ -17,17 +17,17 @@
 2. Cloning the repo
 3. PyInstaller to build App
   - Install Pyinstaller
-  ```
-  pip install pyinstaller
-  ```
+    ```
+    pip install pyinstaller
+    ```
   - Go to src directory
-  ```
-  cd src
-  ```
+    ```
+    cd src
+    ```
   - Build App
-  ```
-  pyinstaller --onefile main.py
-  ```
+    ```
+    pyinstaller --onefile main.py
+    ```
 4. App is build. Navigate to the dist file in src and run the main.exe
 
 # How to use
